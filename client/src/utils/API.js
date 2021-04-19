@@ -1,11 +1,12 @@
 import axios from "axios";
+import Api from "./apiKey";
 
 const options = {
   method: 'GET',
   url: 'https://soccer-football-info.p.rapidapi.com/matches/view/basic/',
   params: {i: '1', l: 'en_US'},
   headers: {
-    'x-rapidapi-key': '',
+    'x-rapidapi-key': Api.key,
     'x-rapidapi-host': 'soccer-football-info.p.rapidapi.com'
   }
 };
