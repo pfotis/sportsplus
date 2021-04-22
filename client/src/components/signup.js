@@ -8,7 +8,7 @@ export default class SignUp extends Component {
 		this.state = {
             firstname: '',
             lastname: '',
-			username: '',
+			email: '',
 			password: '',
 			redirectTo: null
 
@@ -24,15 +24,15 @@ export default class SignUp extends Component {
 	}
 
     handleSubmit(event) {
-		console.log('sign-up handleSubmit, username: ')
-		console.log(this.state.username)
+		console.log('sign-up handleSubmit, email: ')
+		console.log(this.state.email)
 		event.preventDefault()
 
-		//request to server to add a new username/password
+		//request to server to add a new email/password
 		axios.post('/user/', {
             firstname: this.state.firstname,
             lastname: this.state.lastname,
-			username: this.state.username,
+			email: this.state.email,
 			password: this.state.password,
 		})
 			.then(response => {
@@ -43,7 +43,7 @@ export default class SignUp extends Component {
 						redirectTo: '/login'
 					})
 				} else {
-					console.log('username already taken')
+					console.log('email already taken')
 				}
 			}).catch(error => {
 				console.log('signup error: ')
@@ -91,8 +91,8 @@ export default class SignUp extends Component {
                             type="email" 
                             className="form-control" 
                             placeholder="Enter email" 
-                            name="username"
-                            value={this.state.username}
+                            name="email"
+                            value={this.state.email}
 							onChange={this.handleChange}
                         />
                     </div>

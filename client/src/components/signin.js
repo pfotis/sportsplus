@@ -6,7 +6,7 @@ export default class Login extends Component {
     constructor() {
         super()
         this.state = {
-            username: '',
+            email: '',
             password: '',
             redirectTo: null
         }
@@ -27,7 +27,7 @@ export default class Login extends Component {
 
         axios
             .post('/user/login', {
-                username: this.state.username,
+                email: this.state.email,
                 password: this.state.password
             })
             .then(response => {
@@ -37,11 +37,11 @@ export default class Login extends Component {
                     // update App.js state
                     this.props.updateUser({
                         loggedIn: true,
-                        username: response.data.username
+                        email: response.data.email
                     })
                     // update the state to redirect to home
                     this.setState({
-                        redirectTo: '/'
+                        redirectTo: '/main'
                     })
                 }
             }).catch(error => {
@@ -65,10 +65,10 @@ export default class Login extends Component {
                         <label>Email</label>
                         <input 
                             type="email"
-                            name="username"
+                            name="email"
                             className="form-control" 
                             placeholder="Enter email"
-                            value={this.state.username}
+                            value={this.state.email}
                             onChange={this.handleChange}
                         />
                     </div>
